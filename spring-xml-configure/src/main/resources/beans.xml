@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--
+       id: 唯一标识bean
+       class: bean所对应的类型
+    -->
+    <bean id="address" class="pojo.Address">
+        <property name="address" value="bjtu"/>
+    </bean>
+    <!--
+    value: 基本类型
+    ref: 引用类型
+    -->
+    <bean id="user1" class="pojo.User">
+        <property name="name" value="陈浩南"/>
+    </bean>
+    <!--
+     name: 用来代表bean的别名,可以有多个值,使用, ; 分隔
+     -->
+    <bean id="user2" class="pojo.User" name="user">
+        <property name="name" value="陈浩南"/>
+        <property name="address" ref="address"/>
+    </bean>
+
+    <!--使用alias来设置别名-->
+    <alias name="user2" alias="new user"/>
+
+    <!-- 使用构造器(非默认构造器)  -->
+    <bean name="account1" class="pojo.Account">
+        <constructor-arg name="account" value="500"/>
+    </bean>
+
+
+
+
+</beans>
