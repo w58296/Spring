@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
-
 
     <!--
        id: 唯一标识bean
@@ -19,6 +19,10 @@
     <bean id="user1" class="pojo.User">
         <property name="name" value="陈浩南"/>
     </bean>
+    <!--p命名空间-->
+    <!-- p = property -->
+    <!-- 使用p命名空间需要导入依赖 -->
+    <bean id="user4" class="pojo.User" p:name="陈浩南"/>
     <!--
      name: 用来代表bean的别名,可以有多个值,使用, ; 分隔
      -->
@@ -26,15 +30,27 @@
         <property name="name" value="陈浩南"/>
         <property name="address" ref="address"/>
     </bean>
-
     <!--使用alias来设置别名-->
     <alias name="user2" alias="new user"/>
 
     <!-- 使用构造器(非默认构造器)  -->
+    <!-- 使用构造器参数名称 -->
     <bean name="account1" class="pojo.Account">
         <constructor-arg name="account" value="500"/>
     </bean>
-
+    <!-- 使用参数类型 -->
+    <bean name="account2" class="pojo.Account">
+        <constructor-arg type="int " value="100"/>
+    </bean>
+    <!-- 使用参数位置下标 -->
+    <bean name="account3" class="pojo.Account">
+        <constructor-arg index="0" value="300"/>
+    </bean>
+    <!--可以使用static函数配置bean-->
+    <!-- factory-method表示创建实例的工厂方法-->
+    <bean name="account4" class="pojo.AccountFactory" factory-method="createAccount">
+        <constructor-arg name="account" value="1"/>
+    </bean>
 
 
 

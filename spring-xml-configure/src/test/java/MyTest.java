@@ -10,6 +10,7 @@ public class MyTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         //使用getBean获取bean
         //参数为bean的id, classType为可选参数,默认获取的为object类型
+        System.out.println("create the container!");
         User user1 = context.getBean("user1",User.class);
         User user2 = (User) context.getBean("user2");
 

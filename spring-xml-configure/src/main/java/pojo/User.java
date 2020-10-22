@@ -4,6 +4,10 @@ public class User {
     private String name;
     private Address address;
 
+    public User() {
+        System.out.println("initialize the bean!");
+    }
+
     public String getName() {
         return name;
     }
